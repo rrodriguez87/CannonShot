@@ -20,9 +20,15 @@ void Scene::Add(Projectile *proj){
 }
 
 void Scene::RenderScene(){
-	for(int i=0; i<proStack.size(); ++i){
+	DrawBounds(); //visually display the boundaries of my drawing area 
+
+	for(unsigned int i=0; i<proStack.size(); ++i){
+		//move projectile with respect to its velocity,
+		//then apply the effects of gravity to the object's
+		//velocity. Draw projectile to window
+		ApplyVelocity( proStack[i] ); 
 		ApplyGravity( proStack[i] );
-		//ApplyControl( proStack[i] );
+		ProcessCollisions( proStack );
 		proStack[i]->Draw();
 	}
 }

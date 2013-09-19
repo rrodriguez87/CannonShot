@@ -2,6 +2,7 @@
 #define PRECOMPILED_H
 
 #include <iostream>
+#include <time.h>
 #include <glut.h>
 #include <vector>
 

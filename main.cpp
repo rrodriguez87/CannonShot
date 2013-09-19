@@ -7,6 +7,7 @@ void initRendering(){
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
 float CAMERA_DIST = CAMERA_DIST_START;
+float CAMERA_ROT = 0;
 void Keyboard( unsigned char key, int x, int y ){
 	switch( key ){
 		case 27:
@@ -16,8 +17,7 @@ void Keyboard( unsigned char key, int x, int y ){
 		}
 		case ' ':
 		{
-				Projectile *proj= new Projectile( Random(-SCENE_SIZE, SCENE_SIZE), Random(-SCENE_SIZE, SCENE_SIZE), Random(-SCENE_SIZE, SCENE_SIZE) );
-				//Projectile *proj = new Projectile( -SCENE_SIZE, 0, 0);
+				Projectile *proj= new Projectile();
 				scene.Add(proj);
 		
 
@@ -25,19 +25,22 @@ void Keyboard( unsigned char key, int x, int y ){
 		}
 		case 'w':
 		{
-
+			CAMERA_DIST--;
 			break;
 		}
 		case 'a':
 		{
+			CAMERA_ROT++;
 			break;
 		}
 		case 's':
 		{
+			CAMERA_DIST++;
 			break;
 		}
 		case 'd':
 		{
+			CAMERA_ROT--;
 			break;
 		}
 	}
@@ -69,9 +72,8 @@ void Display( void ){
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 
-	gluLookAt( 0.0f, 0.0f, CAMERA_DIST, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f );
+	gluLookAt( 0.0, 0.0f, CAMERA_DIST, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f );
 	glRotatef(_angle, 0.0f, 1.0f, 0.0f);
-	scene.DrawBounds(); //for easy debugging, visual aid
 	scene.RenderScene();
 	glutSwapBuffers();
 }
@@ -85,6 +87,7 @@ void Update( int value ){
 }
 
 int main(int argc, char **argv){
+	srand( ( unsigned int )time( 0 ) );
 	glutInit( &argc, argv );
 	glutInitDisplayMode( GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
 	glutInitWindowSize( 800, 600 );

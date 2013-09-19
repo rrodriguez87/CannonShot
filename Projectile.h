@@ -3,10 +3,13 @@
 
 class Projectile{
 public:
-	Projectile(float x, float y, float z);
+	Projectile();
 	void Draw();
+	float radius;
+	float elasticity;
+	int count;
 	Vec3f pos; //Position (x, y, z)
-	Vec3f color; //Color (Red, Green, Blue)
-	Vec3f velo; //Velocity
+	Vec3f col; //Color (Red, Green, Blue)
+	Vec3f vel; //Velocity
 };
 #endif
