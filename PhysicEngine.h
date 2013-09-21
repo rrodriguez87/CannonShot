@@ -3,6 +3,7 @@
 
 const float GRAVITY = 9.8f;
 const float ELASTICITY = 0.9f;
+const float FRICTION = 0.001f;
 const float RADIUS = 1.0;
 const float TIME_BETWEEN_UPDATES = 0.005f;
 const float dt = 1.0f / 60.0f;
@@ -43,7 +44,7 @@ inline Vec3f WallDirection( Wall wall ) {
 		case WALL_BOTTOM:
 			return Vec3f( 0, -1, 0 );
 		default:
-		return Vec3f( 0, 0, 0 );
+			return Vec3f( 0, 0, 0 );
 	}
 }
 
@@ -60,8 +61,8 @@ inline void ProcessCollisions( std::vector< Projectile * > proStack ){
 		for( int j = 0 ; j < 6 ; j++ ) {
 			if( CheckForCollision( proStack[i], walls[j] ) ) {
 				Vec3f dir = ( WallDirection( walls[j] )).Normalize();
-				dir *= ( 2 *proStack[i]->vel.Dot( dir ) );
-				proStack[i]->vel -= dir * proStack[i]->elasticity; 
+				proStack[i]->vel -= ( dir * 2 * proStack[i]->vel.Dot( dir ) ) * proStack[i]->elasticity;
+				proStack[i]->vel -= proStack[i]->vel * FRICTION;
 			}
 		}	
 	}

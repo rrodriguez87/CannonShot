@@ -17,8 +17,8 @@ void Keyboard( unsigned char key, int x, int y ){
 		}
 		case ' ':
 		{
-				Projectile *proj= new Projectile();
-				scene.Add(proj);
+			Projectile *proj= new Projectile();
+			scene.Add(proj);
 		
 
 			break;
@@ -51,10 +51,10 @@ void Mouse( int state, int key, int x, int y ){
 	if( state == GLUT_DOWN )
 		switch(key){
 			case GLUT_LEFT_BUTTON:
-				{
-					std::cout<< x << ", " << y <<std::endl;
-					break;
-				}
+			{
+				std::cout<< x << ", " << y <<std::endl;
+				break;
+			}
 		}
 }
 

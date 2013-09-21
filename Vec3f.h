@@ -10,6 +10,7 @@ class Vec3f{
 
 		Vec3f operator*( float scale ) const;
 		Vec3f operator=( int value );
+		Vec3f operator-( const Vec3f &rightSide );
 		const Vec3f &operator*=( float scale );
 		const Vec3f &operator-=( const Vec3f &rightSide );
 		const Vec3f &operator+=( const Vec3f &rightSide );

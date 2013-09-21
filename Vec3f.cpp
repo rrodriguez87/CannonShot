@@ -29,6 +29,13 @@ Vec3f Vec3f::operator=( int value ) {
 	v[2] = value;
 	return *this;
 }
+
+Vec3f Vec3f::operator-( const Vec3f &rightSide ){
+		v[0] -= rightSide.v[0];
+		v[1] -= rightSide.v[1];
+		v[2] -= rightSide.v[2];
+	return *this;
+}
 const Vec3f &Vec3f::operator*=(float scale){
 	v[0] *= scale;
 	v[1] *= scale;
