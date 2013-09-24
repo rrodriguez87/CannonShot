@@ -31,9 +31,9 @@ Vec3f Vec3f::operator=( int value ) {
 }
 
 Vec3f Vec3f::operator-( const Vec3f &rightSide ){
-		v[0] -= rightSide.v[0];
-		v[1] -= rightSide.v[1];
-		v[2] -= rightSide.v[2];
+	v[0] -= rightSide.v[0];
+	v[1] -= rightSide.v[1];
+	v[2] -= rightSide.v[2];
 	return *this;
 }
 const Vec3f &Vec3f::operator*=(float scale){
@@ -60,15 +60,11 @@ const Vec3f &Vec3f::operator+=( const Vec3f &rightSide ){
 Vec3f Vec3f::Normalize() const{
 	float m = sqrt( v[0] * v[0] + v[1] * v[1] + v[2] * v[2] );
 	Vec3f k( v[0] / m , v[1] / m , v[2] / m );
-
-	//::cout << "Normalize: " << k << std::endl;
 	return k;
 }
 
 float Vec3f::Dot( const Vec3f &other ) const {
 	float u = v[0] * other.v[0] + v[1] * other.v[1] + v[2] * other.v[2];
-
-	//std::cout << "Dot: " << u << std::endl;
 	return u;
 }
 

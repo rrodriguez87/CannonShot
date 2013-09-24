@@ -6,8 +6,9 @@ void initRendering(){
 	glEnable( GL_DEPTH_TEST );
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 }
+
 float CAMERA_DIST = CAMERA_DIST_START;
-float CAMERA_ROT = 0;
+float _angle = 0.0f;
 void Keyboard( unsigned char key, int x, int y ){
 	switch( key ){
 		case 27:
@@ -19,28 +20,26 @@ void Keyboard( unsigned char key, int x, int y ){
 		{
 			Projectile *proj= new Projectile();
 			scene.Add(proj);
-		
-
 			break;
 		}
 		case 'w':
 		{
-			CAMERA_DIST--;
+			CAMERA_DIST++;
 			break;
 		}
 		case 'a':
 		{
-			CAMERA_ROT++;
+			_angle++;
 			break;
 		}
 		case 's':
 		{
-			CAMERA_DIST++;
+			CAMERA_DIST--;
 			break;
 		}
 		case 'd':
 		{
-			CAMERA_ROT--;
+			_angle--;
 			break;
 		}
 	}
@@ -67,19 +66,19 @@ void Reshape( int w, int h ){
 	gluPerspective(45.0f, (double)w/(double)h, 0.001f, 500.0f);
 	glMatrixMode( GL_MODELVIEW );
 }
-float _angle = 0.0f;
+
 void Display( void ){
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 
 	gluLookAt( 0.0, 0.0f, CAMERA_DIST, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f );
-	glRotatef(_angle, 0.0f, 1.0f, 0.0f);
+	glRotatef(_angle, 1.0f, 0.0f, 0.0f);
 	scene.RenderScene();
 	glutSwapBuffers();
 }
 
 void Update( int value ){
-	_angle += 1.5f;
+	//_angle += 1.5f;
 	if( _angle >= 360 )
 		_angle -=360;
 	glutPostRedisplay();

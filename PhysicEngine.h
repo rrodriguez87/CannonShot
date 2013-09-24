@@ -19,8 +19,7 @@ inline float Random( float lo, float hi ) {
 
 inline void ApplyGravity( Projectile* proj ) {
 	/* Decrement the Y velocity_component of projectile if
-	   projectile has not reached the scene floor. Otherwise
-	   set Velocity to 0 and let projectile sit on scene floor. */
+	   projectile has not reached the scene floor. */
 	if( proj->pos[1] - proj->radius >= -SCENE_SIZE)
 		proj->vel -= Vec3f( 0, GRAVITY * TIME_BETWEEN_UPDATES, 0 );
 }
@@ -56,7 +55,8 @@ inline bool CheckForCollision( Projectile* proj, Wall wall ) {
 
 inline void ProcessCollisions( std::vector< Projectile * > proStack ){
 	Wall walls[] = { WALL_LEFT, WALL_RIGHT, WALL_FAR, WALL_NEAR, WALL_TOP, WALL_BOTTOM };
-	//check for projectile-wall collisions
+
+	//Cycle through projectile objects and check if the object has collided with a wall.
 	for( unsigned int i = 0 ; i < proStack.size() ; ++i ) {
 		for( int j = 0 ; j < 6 ; j++ ) {
 			if( CheckForCollision( proStack[i], walls[j] ) ) {

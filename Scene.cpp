@@ -20,7 +20,8 @@ void Scene::Add(Projectile *proj){
 }
 
 void Scene::RenderScene(){
-	DrawBounds(); //visually display the boundaries of my drawing area 
+	//visually display the boundaries of the drawing area 
+	DrawBounds(); 
 
 	for(unsigned int i=0; i<proStack.size(); ++i){
 		//move projectile with respect to its velocity,
@@ -35,58 +36,54 @@ void Scene::RenderScene(){
 
 void Scene::DrawBounds(){
 	glBegin( GL_LINES );
-		//x-axis (Green line)
-		glColor3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(SCENE_SIZE, 0.0f, 0.0f);
-		glVertex3f(-SCENE_SIZE, 0.0f, 0.0f);
+		//x-axis ( Green line )
+		glColor3f( 0.0f, 1.0f, 0.0f );
+		glVertex3f( SCENE_SIZE, 0.0f, 0.0f );
+		glVertex3f( -SCENE_SIZE, 0.0f, 0.0f );
 
-		//y-axis (Red line)
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(0.0f, SCENE_SIZE, 0.0f);
-		glVertex3f(0.0f, -SCENE_SIZE, 0.0f);
+		//y-axis ( Red line )
+		glColor3f( 1.0f, 0.0f, 0.0f );
+		glVertex3f( 0.0f, SCENE_SIZE, 0.0f );
+		glVertex3f( 0.0f, -SCENE_SIZE, 0.0f );
 
-		//z-axis (blue line)
-		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(0.0f, 0.0f, SCENE_SIZE);
-		glVertex3f(0.0f, 0.0f, -SCENE_SIZE);
+		//z-axis ( Blue line )
+		glColor3f( 0.0f, 0.0f, 1.0f );
+		glVertex3f( 0.0f, 0.0f, SCENE_SIZE );
+		glVertex3f( 0.0f, 0.0f, -SCENE_SIZE );
 
-		//boundaries
-		glColor3f(1.0f, 1.0f, 0.0f);
+		//boundaries ( Yellow Walls )
+		glColor3f( 1.0f, 1.0f, 0.0f );
 
 		//back
-		glVertex3f(SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE);
-		glVertex3f(-SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE);
-
-		glVertex3f(-SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE);
-		glVertex3f(-SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE);
-
-		glVertex3f(-SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE);
-		glVertex3f(SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE);
-
-		glVertex3f(SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE);
-		glVertex3f(SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE);
+		glVertex3f( SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE );
 
 		//front
-		glVertex3f(SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE);
-		glVertex3f(-SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE);
+		glVertex3f( SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE );
 
-		glVertex3f(-SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE);
-		glVertex3f(-SCENE_SIZE, SCENE_SIZE, SCENE_SIZE);
+		//Right
+		glVertex3f( SCENE_SIZE, SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE ); 
+		glVertex3f( -SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE );
 
-		glVertex3f(-SCENE_SIZE, SCENE_SIZE, SCENE_SIZE);
-		glVertex3f(SCENE_SIZE, SCENE_SIZE, SCENE_SIZE);
-
-		glVertex3f(SCENE_SIZE, SCENE_SIZE, SCENE_SIZE);
-		glVertex3f(SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE);
-
-		glVertex3f(SCENE_SIZE, SCENE_SIZE, SCENE_SIZE);
-		glVertex3f(SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE); 
-		glVertex3f(-SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE);
-		glVertex3f(-SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE);
-
-		glVertex3f(-SCENE_SIZE, SCENE_SIZE, SCENE_SIZE);
-		glVertex3f(-SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE);
-		glVertex3f(SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE);
-		glVertex3f(SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE);
+		//Left
+		glVertex3f( -SCENE_SIZE, SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( -SCENE_SIZE, SCENE_SIZE, -SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, -SCENE_SIZE, SCENE_SIZE );
+		glVertex3f( SCENE_SIZE, -SCENE_SIZE, -SCENE_SIZE );
 	glEnd();
 }

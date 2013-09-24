@@ -15,7 +15,6 @@ class Vec3f{
 		const Vec3f &operator-=( const Vec3f &rightSide );
 		const Vec3f &operator+=( const Vec3f &rightSide );
 
-
 		Vec3f Normalize() const;
 		float Dot( const Vec3f &other ) const;
 	private:
